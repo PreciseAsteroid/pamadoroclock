@@ -148,4 +148,8 @@ jQuery(document).ready(function($) {
   jQuery('.btnbreakupdateminus').on('click',function(e){
     clock.update('b',-60);
   });
+
+  $(function() {
+       $(".dial").knob();
+   });
 });
