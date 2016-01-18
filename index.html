@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Pomadoro Clock</title>
   <meta charset="utf-8">
@@ -11,54 +12,91 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="http://anthonyterrien.com/js/jquery.knob.js"></script>
   <script src="js/main.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Orbitron:400,700,900,500' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Vesper+Libre:400,500,700,900' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
 
-<div class="container main">
-  <h1 class="text-center">Pamadoro clock</h1>
+  <div class="container main">
+    <div class="row">
+      <div class="h1 text-center title">Pamadoro Clock</div>
+    </div>
 
-  <div class="row">
-      <div class="currentTime text-center">start</div>
-  </div>
 
-  <div class="row">
-      <div class="Session text-center">start</div>
-  </div>
 
-  <div class="row">
-      <div class="Break text-center">start</div>
-  </div>
+    <!-- buttons components -->
+    <div class="row text-center">
+      <div class="col-xs-6 col-xs-push-3">
+        <div class="btn-group btn-group-sm btn-group-justified tape_button_grp" role="group">
+          <div class="btn-group">
+            <button type="button" class="btn btn-success btncountdown">
+              <span class="glyphicon glyphicon-play"></span>
+            </button>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default btnpause">
+              <span class="glyphicon glyphicon-pause"></span>
+            </button>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger btnreset">
+              <span class="glyphicon glyphicon-stop"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="row text-center">
-    <input class="btn btn-primary btncountdown" type="button" name="countdown" value="countdown">
-  </div>
 
-  <div class="row text-center">
-    <input class="btn btn-primary btnpause" type="button" name="pause" value="pause">
-  </div>
+    <div class="row text-center circular-bar">
+      <input type="text" value="0" class="dial" data-width="200" data-skin="tron" data-thickness="0.1" data-displayInput="false" data-readOnly="true">
+      <div class="currentTime text-center h1"></div>
+    </div>
 
-  <div class="row text-center">
-    <input class="btn btn-primary btnreset" type="button" name="reset" value="reset">
-  </div>
 
-  <div class="row text-center">
-    <input class="btn btn-primary btnsessionupdateplus" type="button" value="session +">
-  </div>
+    <div class="row">
 
-  <div class="row text-center">
-    <input class="btn btn-primary btnsessionupdateminus" type="button" value="session -">
-  </div>
+      <!-- session component -->
 
-  <div class="row text-center">
-    <input class="btn btn-primary btnbreakupdateplus" type="button" value="break +">
-  </div>
+      <div class="col-sm-3 col-sm-push-3 col-xs-6">
+        <div class="row text-center">
+          <div class="h3 subheader">Work</div>
+        </div>
 
-  <div class="row text-center">
-    <input class="btn btn-primary btnbreakupdateminus" type="button" value="break -">
-  </div>
-  <div class="row text-center">
-    <input type="text" value="75" class="dial">
-  </div>
+        <div class="row">
+          <div class="pagination-centered text-center">
+            <ul class="pagination">
+              <li class="btn btnsessionupdateminus glyphicon glyphicon-minus"></li>
+              <li class="Session timedisplay h4">
+              </li>
+              <li class="btn btnsessionupdateplus glyphicon glyphicon-plus"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- break component -->
 
+      <div class="col-sm-3 col-sm-push-3 col-xs-6">
+        <div class="row text-center">
+          <div class="h3 subheader">Rest</div>
+        </div>
+
+        <div class="row">
+          <div class="pagination-centered text-center">
+            <ul class="pagination">
+              <li class="btn btnbreakupdateminus glyphicon glyphicon-minus"></li>
+              <li class="Break timedisplay h4">
+              </li>
+              <li class="btn btnbreakupdateplus glyphicon glyphicon-plus"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

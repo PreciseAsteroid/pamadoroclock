@@ -1,8 +1,42 @@
 body {
-  background-color: grey !important;
+  background-color: black !important;
   color: white;
+  min-width: 400px;
+  widows: auto !important;
 }
 
-.btn{
-  margin: 5px;
+.title {
+  font-family: 'Vesper Libre', serif;
+  font-size: 40px;
+}
+
+.subheader{
+  font-family: 'Vesper Libre', serif;
+  font-size: 35px;
+}
+
+.tape_button_grp{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.tape_button{
+  margin-top: 1.25em;
+
+}
+
+.currentTime {
+  display: block;
+  margin-top: -125px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 45px;
+}
+
+.circular-bar{
+  margin-bottom: 70px;
+}
+
+.timedisplay{
+font-family: 'Orbitron', sans-serif;
+font-size: 25px;
 }

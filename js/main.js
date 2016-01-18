@@ -1,4 +1,7 @@
 
+const sessionColor = '#449D44';
+const breakColor = '#C9302C';
+
 function Clock(iSession, iBreak) {
   'use strict';
   var Session     = iSession;
@@ -10,17 +13,21 @@ function Clock(iSession, iBreak) {
   var dirty       = false;
 
   refreshView('.currentTime',convSecTime(currentTime));
-  refreshView('.Break',convSecMin(Break));
-  refreshView('.Session',convSecMin(Session));
+  refreshView('.Break',convSecTime(Break));
+  refreshView('.Session',convSecTime(Session));
 
 // private method
   var switchMode = function(){
     if (mode === 's') {
       mode = 'b';
       currentTime = Break;
+      drawDial(clock.getBreakTime(),breakColor,sessionColor);
+
     } else {
       mode = 's';
       currentTime = Session;
+      drawDial(clock.getSessionTime(),sessionColor,breakColor);
+
     }
     console.log('mode switched to: ' + mode );
   };
@@ -46,6 +53,14 @@ function Clock(iSession, iBreak) {
             }
             --currentTime;
             refreshView('.currentTime',convSecTime(currentTime));
+            switch (mode) {
+              case 's':
+                updateKnob(Session - currentTime);
+                break;
+              default:
+                updateKnob(Break - currentTime);
+            }
+            // updateKnob(currentTime);
           }, 1000);
         } else {
           console.log('cannot start: isRunning: ' + isRunning);
@@ -75,6 +90,8 @@ function Clock(iSession, iBreak) {
     refreshView('.currentTime',convSecTime(currentTime));
     console.log('reset. current time: ' + convSecTime(currentTime));
   };
+  this.getSessionTime = function() {return Session;};
+  this.getBreakTime = function() {return Break;};
   this.getCurrentTime = function() {return currentTime;};
   this.getMode = function() {return mode;};
   this.update = function(mode,secs){
@@ -82,13 +99,13 @@ function Clock(iSession, iBreak) {
     if (Session + secs > 0) {
       Session = Session + secs;
       dirty = true;
-      refreshView('.Session',convSecMin(Session));
+      refreshView('.Session',convSecTime(Session));
     }
   } else {
     if (Break + secs > 0) {
       Break = Break + secs;
       dirty = true;
-      refreshView('.Break',convSecMin(Break));
+      refreshView('.Break',convSecTime(Break));
 
     }
   }
@@ -116,6 +133,29 @@ convSecTime = function(secs) {
 convertSectoMinutes = function(secs){
     return ~~(secs/60);
 };
+
+updateKnob = function(secs){
+$('.dial')
+  .val(secs)
+  .trigger('change');
+};
+
+
+drawDial = function(max,fgColor,bgColor){$(function() {
+  $(".dial").knob();
+  $(".dial").trigger(
+       'configure',
+       {
+      'max':max,
+      'min':0,
+      'fgColor': fgColor,
+      'bgColor': bgColor,
+      'rotation': 'counterclockwise'
+     }
+   );
+
+     updateKnob(0);
+ });};
 
 // afterload
 jQuery(document).ready(function($) {
@@ -149,7 +189,7 @@ jQuery(document).ready(function($) {
     clock.update('b',-60);
   });
 
-  $(function() {
-       $(".dial").knob();
-   });
+  drawDial(clock.getSessionTime(),sessionColor,breakColor);
+
+
 });
