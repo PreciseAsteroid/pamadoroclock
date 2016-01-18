@@ -89,6 +89,8 @@ function Clock(iSession, iBreak) {
     dirty       = false;
     refreshView('.currentTime',convSecTime(currentTime));
     console.log('reset. current time: ' + convSecTime(currentTime));
+    drawDial(clock.getSessionTime(),sessionColor,breakColor);
+
   };
   this.getSessionTime = function() {return Session;};
   this.getBreakTime = function() {return Break;};
