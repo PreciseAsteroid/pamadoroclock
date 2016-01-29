@@ -1,7 +1,7 @@
 body {
   background-color: black !important;
-  color: white;
-  min-width: 400px;
+  color: white !important;
+  min-width: 250px;
   widows: auto !important;
 }
 

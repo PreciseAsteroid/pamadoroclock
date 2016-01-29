@@ -11,6 +11,8 @@ function Clock(iSession, iBreak) {
   var currentTime = iSession;
   var intervalID  = null;
   var dirty       = false;
+  var sound = new Audio("http://www.flashkit.com/imagesvr_ce/flashkit/soundfx/Cartoon/Horns/Honk-Public_D-28/Honk-Public_D-28_hifi.mp3");
+
 
   refreshView('.currentTime',convSecTime(currentTime));
   refreshView('.Break',convSecTime(Break));
@@ -30,6 +32,12 @@ function Clock(iSession, iBreak) {
 
     }
     console.log('mode switched to: ' + mode );
+    playSound();
+
+  };
+
+  var playSound = function() {
+    sound.play();
   };
 
 
@@ -44,6 +52,8 @@ function Clock(iSession, iBreak) {
           currentTime = Break;
         }
         refreshView('.currentTime',convSecTime(currentTime));
+        drawDial(clock.getSessionTime(),sessionColor,breakColor);
+
       }
       if (isRunning       === false) {
           isRunning         = true;
@@ -92,6 +102,7 @@ function Clock(iSession, iBreak) {
     drawDial(clock.getSessionTime(),sessionColor,breakColor);
 
   };
+
   this.getSessionTime = function() {return Session;};
   this.getBreakTime = function() {return Break;};
   this.getCurrentTime = function() {return currentTime;};
@@ -161,7 +172,7 @@ drawDial = function(max,fgColor,bgColor){$(function() {
 
 // afterload
 jQuery(document).ready(function($) {
-  clock = new Clock(120, 60);
+  clock = new Clock(25*60, 5*60);
 
   jQuery('.btncountdown').on('click',function(e){
     clock.countdown();
@@ -175,11 +186,11 @@ jQuery(document).ready(function($) {
     clock.reset();
   });
 
-  jQuery('.btnsessionupdateplus').on('click',function(e){
+  jQuery('.btnsessionupdateplus').click(function(){
     clock.update('s',60);
   });
 
-  jQuery('.btnsessionupdateminus').on('click',function(e){
+  jQuery('.btnsessionupdateminus').click(function(){
     clock.update('s',-60);
   });
 

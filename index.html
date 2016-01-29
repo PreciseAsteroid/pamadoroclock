@@ -5,28 +5,28 @@
   <title>Pomadoro Clock</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="http://anthonyterrien.com/js/jquery.knob.js"></script>
   <script src="js/main.js"></script>
 
-  <link href='https://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
+
   <link href='https://fonts.googleapis.com/css?family=Orbitron:400,700,900,500' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Vesper+Libre:400,500,700,900' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
+  <!-- <audio id="beep" controls preload="auto">
+      <source src="music.ogg" type="audio/ogg" />
+      <source src="music.mp3" type="audio/mp3" />
+      Your browser isn't invited for super fun audio time.
+    </audio> -->
 
   <div class="container main">
-    <div class="row">
-      <div class="h1 text-center title">Pamadoro Clock</div>
-    </div>
-
-
-
+    <div class="row text-center title">Pamadoro Clock</div>
     <!-- buttons components -->
     <div class="row text-center">
       <div class="col-xs-6 col-xs-push-3">
@@ -52,8 +52,8 @@
 
 
     <div class="row text-center circular-bar">
-      <input type="text" value="0" class="dial" data-width="200" data-skin="tron" data-thickness="0.1" data-displayInput="false" data-readOnly="true">
-      <div class="currentTime text-center h1"></div>
+      <input type="text" value="0" class="col-sm-12 dial" data-width="200" data-skin="tron" data-thickness="0.1" data-displayInput="false" data-readOnly="true">
+      <div class="col-sm-12 currentTime text-center "></div>
     </div>
 
 
@@ -61,42 +61,61 @@
 
       <!-- session component -->
 
-      <div class="col-sm-3 col-sm-push-3 col-xs-6">
+      <div class="col-md-3 col-md-push-3">
         <div class="row text-center">
-          <div class="h3 subheader">Work</div>
+          <div class="col-sm-12  subheader">Work</div>
         </div>
 
         <div class="row">
-          <div class="pagination-centered text-center">
+          <div class="col-sm-12 pagination-centered text-center">
             <ul class="pagination">
-              <li class="btn btnsessionupdateminus glyphicon glyphicon-minus"></li>
-              <li class="Session timedisplay h4">
+              <li>
+                <label type="button" class="btn btnsessionupdateminus" aria-label="minus">
+                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </label>
               </li>
-              <li class="btn btnsessionupdateplus glyphicon glyphicon-plus"></li>
+              <li class="Session timedisplay ">
+              </li>
+              <li>
+                <label type="button" class="btn btnsessionupdateplus" aria-label="plus">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </label>
+              </li>
             </ul>
           </div>
         </div>
       </div>
       <!-- break component -->
 
-      <div class="col-sm-3 col-sm-push-3 col-xs-6">
+      <div class="col-md-3 col-md-push-3">
         <div class="row text-center">
-          <div class="h3 subheader">Rest</div>
+          <div class="col-sm-12  subheader">Rest</div>
         </div>
 
         <div class="row">
-          <div class="pagination-centered text-center">
+          <div class="col-sm-12 pagination-centered text-center">
             <ul class="pagination">
-              <li class="btn btnbreakupdateminus glyphicon glyphicon-minus"></li>
-              <li class="Break timedisplay h4">
+              <li>
+                <label type="button" class="btn btnbreakupdateminus" aria-label="minus">
+                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </label>
               </li>
-              <li class="btn btnbreakupdateplus glyphicon glyphicon-plus"></li>
+              <li class="Break timedisplay ">
+              </li>
+              <li>
+                <label type="button" class="btn btnbreakupdateplus" aria-label="minus">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </label>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
+
 </body>
 
 </html>
